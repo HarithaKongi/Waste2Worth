@@ -4,9 +4,7 @@
 
 Waste2Worth is a startup-style full-stack sustainability MVP that helps users submit recyclable waste, estimate its value, create collection requests, and track recycling activity.
 
-## Live Demo
 
-Add your Vercel URL here after deployment.
 
 ## Core Features
 
