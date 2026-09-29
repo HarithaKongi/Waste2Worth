@@ -87,12 +87,7 @@ Copy-Item .env.example .env
 
 Open `http://localhost:3000`.
 
-### Demo admin
 
-```text
-Email: admin@waste2worth.local
-Password: Admin@12345
-```
 
 Change this demo credential before any public production use.
 
