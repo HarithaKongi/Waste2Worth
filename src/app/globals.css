@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7faf8;
+  --foreground: #10231b;
+  --primary: #14804a;
+  --primary-dark: #0d5c35;
+  --accent: #dff7e9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button, input, select { font: inherit; }
+
+.container-x {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.card {
+  border: 1px solid #e2eae5;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 8px 30px rgba(16, 35, 27, .05);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 11px 18px;
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 11px 18px;
+  background: #eef7f1;
+  color: #155b37;
+  font-weight: 700;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid #d7e2db;
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  background: white;
+}
+
+.input:focus { border-color: #42a86e; box-shadow: 0 0 0 3px #dff7e9; }
+
+.muted { color: #64756d; }

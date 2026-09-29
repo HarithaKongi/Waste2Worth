@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum RequestStatus {
+  PENDING
+  COLLECTED
+  COMPLETED
+}
+
+model User {
+  id           String         @id @default(cuid())
+  name         String
+  email        String         @unique
+  passwordHash String
+  role         UserRole       @default(USER)
+  createdAt    DateTime       @default(now())
+  requests     WasteRequest[]
+}
+
+model WasteCategory {
+  id          String         @id @default(cuid())
+  name        String         @unique
+  pricePerKg  Float
+  description String
+  createdAt   DateTime       @default(now())
+  requests    WasteRequest[]
+}
+
+model WasteRequest {
+  id             String         @id @default(cuid())
+  userId         String
+  categoryId     String
+  quantityKg     Float
+  estimatedValue Float
+  location       String
+  status         RequestStatus  @default(PENDING)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category       WasteCategory  @relation(fields: [categoryId], references: [id])
+  events         RequestEvent[]
+}
+
+model RequestEvent {
+  id        String        @id @default(cuid())
+  requestId String
+  status    RequestStatus
+  note      String?
+  createdAt DateTime      @default(now())
+  request   WasteRequest  @relation(fields: [requestId], references: [id], onDelete: Cascade)
+}
